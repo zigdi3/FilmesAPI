@@ -3,13 +3,12 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
-COPY aspnetapp/*.csproj ./FilmesAPI/
-RUN dotnet restore
+COPY *.csproj .
+RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
-COPY aspnetapp/. ./aspnetapp/
-WORKDIR /source/aspnetapp
+COPY FilmesAPI/. ./FilmesAPI/
+WORKDIR /source/FilmesAPI
 RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
