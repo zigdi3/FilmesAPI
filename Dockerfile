@@ -15,6 +15,6 @@ RUN dotnet publish "FilmesAPI.csproj" -c Release -o /app/publish
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 WORKDIR /app
-COPY --from=build  /app /publish 
+COPY --from=build  /app /publish /
 EXPOSE 8084
-ENTRYPOINT ["dotnet", "FilmesAPI.dll"]
+ENTRYPOINT ["dotnet", "/app/publish/FilmesAPI.dll"]
