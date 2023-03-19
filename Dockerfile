@@ -1,4 +1,5 @@
-﻿# https://hub.docker.com/_/microsoft-dotnet
+﻿docker pull mysql
+# https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 WORKDIR /source
 
@@ -18,6 +19,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 
 WORKDIR /app
 COPY --from=build  /app .
+# Desativar o healthcheck padrão do contêiner
+HEALTHCHECK NONE
 
 ENTRYPOINT ["dotnet","FilmesAPI.dll"]
 EXPOSE 8080/tcp
