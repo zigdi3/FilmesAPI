@@ -1,10 +1,9 @@
 ﻿# https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
-COPY FilmesAPI/*.csproj ./FilmesAPI/
+COPY *.csproj .
 RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
@@ -13,7 +12,7 @@ WORKDIR /source/FilmesAPI
 RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as base
 COPY --from=build  /publish /app
 WORKDIR /app
 EXPOSE 8084
