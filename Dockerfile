@@ -3,7 +3,6 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
 COPY FilmesAPI/*.csproj ./FilmesAPI/
 RUN dotnet restore -r linux-musl-x64
 
@@ -16,4 +15,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 WORKDIR /app
 COPY --from=build  /app /publish 
 EXPOSE 8084
-ENTRYPOINT ["bin", "FilmesAPI.dll"]
+ENTRYPOINT ["dotnet", "FilmesAPI.dll"]
