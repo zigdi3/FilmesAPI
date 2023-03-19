@@ -5,13 +5,13 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 COPY *.sln .
 COPY FilmesAPI/*.csproj ./FilmesAPI/
-COPY FilmesAPI/obj/FilmesAPI.csproj.nuget.g.targets ./FilmesAPI/obj/
-COPY FilmesAPI/obj/FilmesAPI.project.assets.json ./FilmesAPI/obj/
 RUN dotnet publish -c release -o /app --no-restore
 
 # copy everything else and build app
 COPY FilmesAPI/. ./FilmesAPI/
-
+COPY FilmesAPI/obj/FilmesAPI.csproj.nuget.g.targets ./FilmesAPI/obj/
+COPY FilmesAPI/obj/FilmesAPI.project.assets.json ./FilmesAPI/obj/
+WORKDIR /FilmesAPI
 RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
