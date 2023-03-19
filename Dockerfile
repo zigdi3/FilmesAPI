@@ -10,11 +10,11 @@ RUN dotnet restore -r linux-musl-x64
 
 # copy everything else and build app
 COPY . ./FilmesAPI/
-RUN dotnet publish "FilmesAPI.csproj" -c Release -o /app/publish
+RUN dotnet publish "FilmesAPI.csproj" -c Release -o /app
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 WORKDIR /app
-COPY --from=build  /app /publish /
+COPY --from=build  /app /
 EXPOSE 8084
 ENTRYPOINT ["dotnet", "/app/publish/FilmesAPI.dll"]
