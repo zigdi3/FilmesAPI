@@ -18,4 +18,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 as base
 WORKDIR /app
 COPY --from=build  /publish /app
 EXPOSE 8084
-ENTRYPOINT ["./FilmesAPI"]
+ENTRYPOINT ["dotnet","FilmesAPI.dll"]
