@@ -3,6 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
+
+COPY *.sln .
 COPY FilmesAPI/*.csproj ./FilmesAPI/
 RUN dotnet restore -r linux-musl-x64
 
