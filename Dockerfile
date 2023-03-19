@@ -3,7 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY *.csproj .
+COPY *.sln .
+COPY FilmesAPI/*.csproj ./FilmesAPI/
 RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
