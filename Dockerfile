@@ -4,7 +4,7 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY ./*.csproj ./app/
+COPY FilmesAPI/*.csproj ./FilmesAPI/
 RUN dotnet restore
 
 # copy everything else and build app
