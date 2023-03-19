@@ -17,4 +17,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 WORKDIR /app
 COPY --from=build  /app .
 EXPOSE 8084
-CMD [ "./FilmesAPI" ]
+ENTRYPOINT ["dotnet", "/app/FilmesAPI.dll"]
