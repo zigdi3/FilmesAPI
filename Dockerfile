@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=build  /app .
 
 ENTRYPOINT ["dotnet","FilmesAPI.dll"]
-EXPOSE 8080/tcp
+EXPOSE 5062/tcp
 
 # Desativar o healthcheck padrão do contêiner
 HEALTHCHECK NONE
