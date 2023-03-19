@@ -15,5 +15,5 @@ RUN dotnet publish -c Release -o /app -r linux-musl-arm64 --self-contained false
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine-arm64v8
 WORKDIR /app
-COPY --from=build /app .
-ENTRYPOINT ["./"]
+COPY --from=build /app ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
