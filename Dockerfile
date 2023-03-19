@@ -1,5 +1,4 @@
-﻿docker pull mysql
-# https://hub.docker.com/_/microsoft-dotnet
+﻿# https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 WORKDIR /source
 
