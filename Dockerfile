@@ -9,8 +9,8 @@ RUN dotnet restore
 
 # copy everything else and build app
 COPY FilmesAPI/. ./FilmesAPI/
-COPY FilmesAPI/obj/FilmesAPI.csproj.nuget.g.targets ./FilmesAPI/obj/
-COPY FilmesAPI/obj/FilmesAPI.project.assets.json ./FilmesAPI/obj/
+#COPY FilmesAPI/obj/FilmesAPI.csproj.nuget.g.targets ./FilmesAPI/obj/
+#COPY FilmesAPI/obj/FilmesAPI.project.assets.json ./FilmesAPI/obj/
 RUN dotnet publish -c release -o /app -
 
 # final stage/image
