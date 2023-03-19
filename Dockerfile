@@ -19,8 +19,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 
 WORKDIR /app
 COPY --from=build  /app .
-# Desativar o healthcheck padrão do contêiner
-HEALTHCHECK NONE
 
 ENTRYPOINT ["dotnet","FilmesAPI.dll"]
 EXPOSE 8080/tcp
+
+# Desativar o healthcheck padrão do contêiner
+HEALTHCHECK NONE
