@@ -18,4 +18,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 as base
 
 WORKDIR /app
 COPY --from=build  /app .
+EXPOSE 7076
 ENTRYPOINT ["dotnet","FilmesAPI.dll"]
