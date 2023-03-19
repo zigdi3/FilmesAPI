@@ -11,7 +11,7 @@ RUN dotnet restore
 COPY FilmesAPI/. ./FilmesAPI/
 #COPY FilmesAPI/obj/FilmesAPI.csproj.nuget.g.targets ./FilmesAPI/obj/
 #COPY FilmesAPI/obj/FilmesAPI.project.assets.json ./FilmesAPI/obj/
-RUN dotnet publish -c release -o /app -
+RUN dotnet publish -c release -o /app 
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as base
