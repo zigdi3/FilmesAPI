@@ -9,6 +9,7 @@ RUN dotnet publish -c release -o /app --no-restore
 
 # copy everything else and build app
 COPY FilmesAPI/. ./FilmesAPI/
+COPY FilmesAPI/obj/FilmesAPI.csproj.nuget.g.targets ./FilmesAPI/obj/
 RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
