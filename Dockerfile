@@ -6,7 +6,7 @@ WORKDIR /source
 
 COPY *.sln .
 COPY FilmesAPI/*.* ./FilmesAPI/
-RUN dotnet restore --use-current-runtime --configfile nuget.config
+RUN dotnet restore --use-current-runtime
 
 # copy everything else and build app
 COPY ./FilmesAPI ./FilmesAPI/
