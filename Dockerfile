@@ -15,6 +15,6 @@ RUN dotnet publish -c release -o /app --no-restore
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as base
 COPY --from=build  /publish /app
-WORKDIR /app
+WORKDIR /aspnetapp
 EXPOSE 8084
 ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
