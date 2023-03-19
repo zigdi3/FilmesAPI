@@ -8,8 +8,8 @@ COPY FilmesAPI/*.csproj ./FilmesAPI/
 RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
-COPY FilmesAPI/. ./FilmesAPI/
-WORKDIR /source/FilmesAPI
+COPY FilmesAPI/. .
+#WORKDIR /source/FilmesAPI
 RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
