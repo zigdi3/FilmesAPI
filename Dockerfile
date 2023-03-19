@@ -9,7 +9,7 @@ COPY FilmesAPI/*.csproj ./FilmesAPI
 RUN dotnet restore -r linux-musl-x64
 
 # copy everything else and build app
-COPY . ./
+COPY . ./FilmesAPI/
 RUN dotnet publish "FilmesAPI.csproj" -c Release -o /app/publish
 
 # final stage/image
