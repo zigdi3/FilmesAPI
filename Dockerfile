@@ -5,7 +5,7 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 
 COPY *.sln .
-COPY FilmesAPI/*.* ./FilmesAPI/
+COPY FilmesAPI/*.csproj ./FilmesAPI/
 RUN dotnet restore --use-current-runtime
 
 # copy everything else and build app
