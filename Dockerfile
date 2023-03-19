@@ -13,7 +13,7 @@ WORKDIR /source/aspnetapp
 RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
-ROM mcr.microsoft.com/dotnet/aspnet:6.0 as base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as base
 COPY --from=build  /publish /app
 WORKDIR /app
 EXPOSE 8084
